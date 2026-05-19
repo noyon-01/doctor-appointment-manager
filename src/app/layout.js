@@ -1,13 +1,9 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Outfit } from "next/font/google";
 import "./globals.css";
+import Navber from "@/components/Navber";
+import Footer from "@/components/Footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const outfit = Outfit({
   subsets: ["latin"],
 });
 
@@ -20,11 +16,14 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      data-theme="light"
+      className={`h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
-        <main>{children}</main>
-        </body>
+      <body className={`${outfit.className} min-h-full flex flex-col`}>
+        <Navber />
+        <main className="">{children}</main>
+        <Footer />
+      </body>
     </html>
   );
 }
