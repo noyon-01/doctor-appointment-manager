@@ -68,17 +68,17 @@ export default function Navber() {
         </div>
         <div className="navbar-end flex items-center gap-4">
           <div className="avatar">
-            <div className="ring-primary ring-offset-base-100 w-20 rounded-full ring-2 ring-offset-2">
+            <div className="ring-primary ring-offset-base-100 w-24 rounded-full ring-2 ring-offset-2">
               <img src="https://img.daisyui.com/images/profile/demo/spiderperson@192.webp" />
             </div>
           </div>
-          <Link className="text-[16px] font-semibold" href={"/login"}>
+          <Link className="text-[16px] font-semibold border-1 border-[#00A6FB] hover:bg-[#00A6FB] hover:text-white px-5 py-2 rounded" href={"/login"}>
             Login
           </Link>
-          <Link className="text-[16px] font-semibold" href={"/logout"}>
+          <Link className="text-[16px] font-semibold bg-[#00A6FB] text-white px-4 py-2 rounded" href={"/logout"}>
             Logout
           </Link>
-          <Link className="text-[16px] font-semibold" href={"/register"}>
+          <Link className="text-[16px] font-semibold bg-[#00A6FB] text-white px-4 py-2 rounded" href={"/register"}>
             Register
           </Link>
         </div>
