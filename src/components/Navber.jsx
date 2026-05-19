@@ -1,27 +1,36 @@
-"use client"
+"use client";
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { GiHealthNormal } from "react-icons/gi";
 
 export default function Navber() {
-    const pathname = usePathname()
+  const pathname = usePathname();
 
   const link = (
     <>
-      <Link className={`${pathname === '/' ? 'text-[#00A6FB] font-bold' : ''}`} href={"/"}>
-        <li className="text-[16px] font-semibold">
-          <a href="/">Home</a>
+      <Link
+        className={`${pathname === "/" ? "text-[#00A6FB] font-bold" : ""}`}
+        href={"/"}
+      >
+        <li className="text-[16px] font-semibold hover:bg-gray-300 rounded px-3 py-1.5">
+          Home
         </li>
       </Link>
-      <Link className={`${pathname === '/appointment' ? 'text-[#00A6FB] font-bold' : ''}`} href={"/appointment"}>
-        <li className="text-[16px] font-semibold">
-          <a href="/appointment">All Appointment</a>
+      <Link
+        className={`${pathname === "/appointment" ? "text-[#00A6FB] font-bold" : ""}`}
+        href={"/appointment"}
+      >
+        <li className="text-[16px] font-semibold hover:bg-gray-300 rounded px-3 py-1.5">
+          All Appointment
         </li>
       </Link>
-      <Link className={`${pathname === '/deshboard' ? 'text-[#00A6FB] font-bold' : ''}`} href={"/deshboard"}>
-        <li className="text-[16px] font-semibold">
-          <a href="/deshboard">Dashboard</a>
+      <Link
+        className={`${pathname === "/deshboard" ? "text-[#00A6FB] font-bold" : ""}`}
+        href={"/deshboard"}
+      >
+        <li className="text-[16px] font-semibold hover:bg-gray-300 rounded px-3 py-1.5">
+          Dashboard
         </li>
       </Link>
     </>
@@ -72,13 +81,22 @@ export default function Navber() {
               <img src="https://img.daisyui.com/images/profile/demo/spiderperson@192.webp" />
             </div>
           </div>
-          <Link className="text-[16px] font-semibold border-1 border-[#00A6FB] hover:bg-[#00A6FB] hover:text-white px-5 py-2 rounded" href={"/login"}>
+          <Link
+            className="text-[16px] font-semibold border-1 border-[#00A6FB] hover:bg-[#00A6FB] hover:text-white px-5 py-2 rounded"
+            href={"/login"}
+          >
             Login
           </Link>
-          <Link className="text-[16px] font-semibold bg-[#00A6FB] text-white px-4 py-2 rounded" href={"/logout"}>
+          <Link
+            className="text-[16px] font-semibold bg-[#00A6FB] text-white px-4 py-2 rounded"
+            href={"/logout"}
+          >
             Logout
           </Link>
-          <Link className="text-[16px] font-semibold bg-[#00A6FB] text-white px-4 py-2 rounded" href={"/register"}>
+          <Link
+            className="text-[16px] font-semibold bg-[#00A6FB] text-white px-4 py-2 rounded"
+            href={"/register"}
+          >
             Register
           </Link>
         </div>
