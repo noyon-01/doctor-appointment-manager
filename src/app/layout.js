@@ -1,6 +1,7 @@
 import { Outfit } from "next/font/google";
 import Navber from "@/components/Navber";
 import Footer from "@/components/Footer";
+import { ToastContainer, toast } from "react-toastify";
 import "./globals.css";
 
 const outfit = Outfit({
@@ -14,14 +15,11 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html
-      lang="en"
-      data-theme="light"
-      className={`h-full antialiased`}
-    >
+    <html lang="en" data-theme="light" className={`h-full antialiased`}>
       <body className={`${outfit.className} min-h-full flex flex-col`}>
         <Navber />
         <main className="">{children}</main>
+        <ToastContainer position="top-center"/>
         <Footer />
       </body>
     </html>

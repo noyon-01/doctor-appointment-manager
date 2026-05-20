@@ -3,21 +3,43 @@
 import { FcGoogle } from "react-icons/fc";
 import {
   Button,
-  Description,
   FieldError,
   FieldGroup,
   Fieldset,
   Form,
   Input,
   Label,
-  TextArea,
   TextField,
 } from "@heroui/react";
 import Link from "next/link";
 import { GiHealthNormal } from "react-icons/gi";
+import { authClient } from "@/lib/auth-client";
+import { toast } from "react-toastify";
+import { redirect } from "next/navigation";
 
 export default function RegisterPage() {
-  const onSubmit = () => {};
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const user = Object.fromEntries(formData.entries());
+
+    const { data, error } = await authClient.signUp.email({
+      name: user.name,
+      email: user.email,
+      password: user.password,
+      image: user.image,
+    });
+
+    if (data) {
+      toast.success("User is Successfully Signup Now!");
+      redirect("/");
+    }
+
+    if (error) {
+      toast.error(error.message);
+      return;
+    }
+  };
 
   return (
     <Form
@@ -50,7 +72,7 @@ export default function RegisterPage() {
             <Input placeholder="https://..." />
             <FieldError />
           </TextField>
-          <TextField isRequired name="name" type="text">
+          <TextField isRequired name="password" type="text">
             <Label>Password</Label>
             <Input placeholder="password" />
             <FieldError />
