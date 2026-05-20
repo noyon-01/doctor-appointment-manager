@@ -1,5 +1,6 @@
 "use client";
 
+import { Avatar } from "@heroui/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { GiHealthNormal } from "react-icons/gi";
@@ -37,7 +38,7 @@ export default function Navber() {
   );
 
   return (
-    <div className="bg-base-100 shadow py-2 sticky top-0">
+    <div className="bg-base-100 shadow py-2 sticky top-0 z-50">
       <div className="navbar max-w-7xl mx-auto ">
         <div className="navbar-start">
           <div className="dropdown">
@@ -76,11 +77,13 @@ export default function Navber() {
           <ul className="menu menu-horizontal px-1">{link}</ul>
         </div>
         <div className="navbar-end flex items-center gap-4">
-          <div className="avatar">
-            <div className="ring-primary ring-offset-base-100 w-24 rounded-full ring-2 ring-offset-2">
-              <img src="https://img.daisyui.com/images/profile/demo/spiderperson@192.webp" />
-            </div>
-          </div>
+          <Avatar size="lg">
+            <Avatar.Image
+              alt="Large Avatar"
+              src="https://heroui-assets.nyc3.cdn.digitaloceanspaces.com/avatars/red.jpg"
+            />
+            <Avatar.Fallback>LG</Avatar.Fallback>
+          </Avatar>
           <Link
             className="text-[16px] font-semibold border-1 border-[#00A6FB] hover:bg-[#00A6FB] hover:text-white px-5 py-2 rounded"
             href={"/login"}
