@@ -1,12 +1,35 @@
-import { Card } from "@heroui/react";
+import { auth } from "@/lib/auth";
+import { PencilToSquare } from "@gravity-ui/icons";
+import { Avatar, Card } from "@heroui/react";
+import { headers } from "next/headers";
 
-export default function ProfilePage({data}) {
+export default async function ProfilePage() {
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+  const user = session?.user;
+
   return (
-    <Card className="rounded-xl">
-      <h2 className="text-2xl font-bold mb-3">Profile Info</h2>
-      <p>Name: Noyon</p>
-      <p>Email: noyon@example.com</p>
-      <p>Phone: 017xxxxxxxx</p>
+    <Card className="rounded-xl w-96 p-6 border-t-4 border-[#00A6FB]">
+      <div className="flex items-center gap-3">
+        <Avatar size="lg" className="w-20 h-20 rounded-full">
+          <Avatar.Image
+            referrerPolicy="no-referrer"
+            alt={user?.name.charAt(0)}
+            src={user?.image}
+          />
+          <Avatar.Fallback>{user?.name.charAt(0)}</Avatar.Fallback>
+        </Avatar>
+
+        <div>
+          <h1 className="text-2xl font-bold">{user?.name}</h1>
+          <p className="text-xl font-semibold text-gray-500">{user?.email}</p>
+        </div>
+      </div>
+
+      <button className="btn rounded-xl bg-[#00A6FB] text-white">
+          <PencilToSquare /> Update Profile
+        </button>
     </Card>
   );
 }

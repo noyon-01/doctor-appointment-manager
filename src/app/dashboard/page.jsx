@@ -1,7 +1,6 @@
 import BookingPage from "@/components/Booking";
 import ProfilePage from "@/components/Profile";
 import { auth } from "@/lib/auth";
-import { Card } from "@heroui/react";
 import { headers } from "next/headers";
 import Link from "next/link";
 
@@ -19,7 +18,7 @@ export default async function DeshboardPage({ searchParams }) {
 
   return (
     <div className="bg-gradient-to-br from-blue-50 via-white to-indigo-100 pt-15 pb-28">
-      <div className="max-w-6xl h-[50vh] mx-auto">
+      <div className="max-w-7xl h-[50vh] mx-auto">
         <h1 className="text-4xl font-bold">Dashboard</h1>
 
         <div className="flex items-center gap-2 p-2 rounded-xl shadow w-70 bg-white mt-4">
