@@ -1,6 +1,5 @@
 "use client";
 
-import { authClient } from "@/lib/auth-client";
 import { PencilToSquare } from "@gravity-ui/icons";
 import {
   Button,
@@ -12,7 +11,6 @@ import {
   TextField,
   TimeField,
 } from "@heroui/react";
-import { GiHealthNormal } from "react-icons/gi";
 
 export function UpdatedBooking({ bookingData }) {
   const handleUpdateBookAppointment = async (e) => {
@@ -59,10 +57,7 @@ export function UpdatedBooking({ bookingData }) {
           <Modal.Dialog className="sm:max-w-md">
             <Modal.CloseTrigger />
             <Modal.Header>
-              <Modal.Heading className="pl-6 text-xl font-bold text-center">
-                <div className="text-4xl text-[#00A6FB] flex justify-center mb-2">
-                  <GiHealthNormal />
-                </div>
+              <Modal.Heading className="pl-6 text-xl font-bold">
                 Update Booking Appointment
               </Modal.Heading>
             </Modal.Header>
