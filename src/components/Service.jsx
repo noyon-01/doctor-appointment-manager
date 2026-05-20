@@ -16,7 +16,7 @@ export default function ServiceSection() {
         </div>
 
         <div className="grid grid-cols-3 gap-6 mt-10">
-          <Card>
+          <Card className="rounded-xl">
             <Image
               className="w-96"
               src={service1}
@@ -38,7 +38,7 @@ export default function ServiceSection() {
             </Link>
           </Card>
 
-          <Card>
+          <Card className="rounded-xl">
             <Image
               className="w-96"
               src={service2}
@@ -60,7 +60,7 @@ export default function ServiceSection() {
             </Link>
           </Card>
 
-          <Card>
+          <Card className="rounded-xl">
             <Image
               className="w-96"
               src={service3}

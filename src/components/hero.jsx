@@ -1,5 +1,6 @@
 import Image from "next/image";
 import receptionist from "@/assets/receptionist.png";
+import Link from "next/link";
 
 export default function HeroSection() {
   return (
@@ -11,8 +12,8 @@ export default function HeroSection() {
           <h1 className="text-7xl font-bold">We Are Committed <br />To Your Health</h1>
           <p className="text-[16px] text-gray-500">It is a established fact that a reader will be distracted by the <br /> content of a page when looking at this layout.</p>
           <div className="flex items-center gap-2 mt-10">
-            <button className="btn bg-[#00A6FB] text-white text-[16px]">Browse Dcotors</button>
-            <button className="btn border-[#00A6FB] hover:bg-[#00A6FB] hover:text-white text-black text-[16px]">My Bookings</button>
+            <Link href={"/appointment"}><button className="btn bg-[#00A6FB] text-white text-[16px]">Browse Dcotors</button></Link>
+            <Link href={"/deshboard"}><button className="btn border-[#00A6FB] hover:bg-[#00A6FB] hover:text-white text-black text-[16px]">My Bookings</button></Link> 
           </div>
         </div>
 
