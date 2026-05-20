@@ -4,6 +4,8 @@ import { MdMoreTime } from "react-icons/md";
 import { FaRegHospital } from "react-icons/fa6";
 import { IoMdLocate } from "react-icons/io";
 import { FaCalendarCheck } from "react-icons/fa";
+import Link from "next/link";
+import { BookingModal } from "@/components/BookingModal";
 
 export default async function DoctorDetailsPage({ params }) {
   const { id } = await params;
@@ -12,7 +14,6 @@ export default async function DoctorDetailsPage({ params }) {
   const doctor = await res.json();
 
   const {
-    _id,
     image,
     name,
     specialty,
@@ -91,7 +92,7 @@ export default async function DoctorDetailsPage({ params }) {
               </div>
             ))}
           </div>
-          <button className="btn bg-[#00A6FB] text-white rounded-xl mt-4">Book Appointment</button>
+          <BookingModal doctor={doctor}/>
         </div>
       </div>
     </div>

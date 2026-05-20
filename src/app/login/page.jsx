@@ -13,9 +13,37 @@ import {
 } from "@heroui/react";
 import Link from "next/link";
 import { GiHealthNormal } from "react-icons/gi";
+import { authClient } from "@/lib/auth-client";
+import { toast } from "react-toastify";
+import { redirect } from "next/navigation";
 
 export default function RegisterPage() {
-  const onSubmit = () => {};
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const user = Object.fromEntries(formData.entries());
+
+    const { data, error } = await authClient.signIn.email({
+      email: user.email,
+      password: user.password,
+    });
+
+    if (data) {
+      toast.success("User is Successfully Login Now!");
+      redirect("/");
+    }
+
+    if (error) {
+      toast.error(error.message);
+      return;
+    }
+  };
+
+  const handleGoogleSignIn = async () => {
+    await authClient.signIn.social({
+      provider: "google",
+    });
+  };
 
   return (
     <Form
@@ -38,9 +66,9 @@ export default function RegisterPage() {
             <Input placeholder="Enter your email" />
             <FieldError />
           </TextField>
-          <TextField isRequired name="name" type="text">
+          <TextField isRequired name="password" type="password">
             <Label>Password</Label>
-            <Input placeholder="password" />
+            <Input placeholder="Password" />
             <FieldError />
           </TextField>
           <p className="text-right text-gray-500">Forgot Password?</p>
@@ -58,6 +86,7 @@ export default function RegisterPage() {
       <div className="divider">OR</div>
 
       <Button
+        onClick={handleGoogleSignIn}
         variant="outline"
         className="w-full border border-[#00A6FB] rounded-xl font-semibold"
       >

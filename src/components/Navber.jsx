@@ -1,5 +1,6 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
 import { Avatar } from "@heroui/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -7,6 +8,13 @@ import { GiHealthNormal } from "react-icons/gi";
 
 export default function Navber() {
   const pathname = usePathname();
+
+  const { data: session } = authClient.useSession();
+  const user = session?.user;
+
+  const onSubmit = async () => {
+    await authClient.signOut();
+  };
 
   const link = (
     <>
@@ -77,31 +85,41 @@ export default function Navber() {
           <ul className="menu menu-horizontal px-1">{link}</ul>
         </div>
         <div className="navbar-end flex items-center gap-4">
-          <Avatar size="lg">
-            <Avatar.Image
-              alt="Large Avatar"
-              src="https://heroui-assets.nyc3.cdn.digitaloceanspaces.com/avatars/red.jpg"
-            />
-            <Avatar.Fallback>LG</Avatar.Fallback>
-          </Avatar>
-          <Link
-            className="text-[16px] font-semibold border-1 border-[#00A6FB] hover:bg-[#00A6FB] hover:text-white px-5 py-2 rounded"
-            href={"/login"}
-          >
-            Login
-          </Link>
-          <Link
-            className="text-[16px] font-semibold bg-[#00A6FB] text-white px-4 py-2 rounded"
-            href={"/logout"}
-          >
-            Logout
-          </Link>
-          <Link
-            className="text-[16px] font-semibold bg-[#00A6FB] text-white px-4 py-2 rounded"
-            href={"/register"}
-          >
-            Register
-          </Link>
+          {user && (
+            <>
+              <Avatar size="lg">
+                <Avatar.Image
+                  referrerPolicy="no-referrer"
+                  alt={user?.name.charAt(0)}
+                  src={user?.image}
+                />
+                <Avatar.Fallback>{user?.name.charAt(0)}</Avatar.Fallback>
+              </Avatar>
+              <button
+                onClick={onSubmit}
+                className="text-[16px] font-semibold bg-[#00A6FB] text-white px-4 py-2 rounded"
+              >
+                Logout
+              </button>
+            </>
+          )}
+
+          {!user && (
+            <>
+              <Link
+                className="text-[16px] font-semibold border-1 border-[#00A6FB] hover:bg-[#00A6FB] hover:text-white px-5 py-2 rounded"
+                href={"/login"}
+              >
+                Login
+              </Link>
+              <Link
+                className="text-[16px] font-semibold bg-[#00A6FB] text-white px-4 py-2 rounded"
+                href={"/register"}
+              >
+                Register
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </div>

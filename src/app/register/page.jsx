@@ -41,6 +41,12 @@ export default function RegisterPage() {
     }
   };
 
+  const handleGoogleSignIn = async () => {
+    await authClient.signIn.social({
+      provider: "google",
+    });
+  };
+
   return (
     <Form
       onSubmit={onSubmit}
@@ -91,6 +97,7 @@ export default function RegisterPage() {
       <div className="divider">OR</div>
 
       <Button
+        onClick={handleGoogleSignIn}
         variant="outline"
         className="w-full border border-[#00A6FB] rounded-xl font-semibold"
       >
