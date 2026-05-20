@@ -18,8 +18,8 @@ export default async function DeshboardPage({ searchParams }) {
   const data = await res.json();
 
   return (
-    <div className="bg-gradient-to-br from-blue-50 via-white to-indigo-100 pt-25 pb-60">
-      <div className="max-w-6xl mx-auto">
+    <div className="bg-gradient-to-br from-blue-50 via-white to-indigo-100 pt-15 pb-28">
+      <div className="max-w-6xl h-[50vh] mx-auto">
         <h1 className="text-4xl font-bold">Dashboard</h1>
 
         <div className="flex items-center gap-2 p-2 rounded-xl shadow w-70 bg-white mt-4">
@@ -46,9 +46,9 @@ export default async function DeshboardPage({ searchParams }) {
           </Link>
         </div>
 
-        <div className="mt-5">
+        <div className="mt-8">
           {activeTab === "booking" ? (
-            <div className="grid grid-cols-4 gap-5">
+            <div className="grid grid-cols-3 gap-5">
               {data.map((d) => (
                 <div key={d._id}>
                   <BookingPage data={d} />
