@@ -19,6 +19,7 @@ import { toast } from "react-toastify";
 export function BookingModal({ doctor }) {
   const { data: session } = authClient.useSession();
   const user = session?.user;
+  // console.log(user)
 
   const handleBookAppointment = async (e) => {
     e.preventDefault();
@@ -26,26 +27,35 @@ export function BookingModal({ doctor }) {
     const data = Object.fromEntries(formData.entries());
 
     const bookingData = {
+      userId: user?.id,
       userEmail: user?.email,
       doctorName: doctor.name,
       patientName: data.name,
       gender: data.gender,
       phone: data.phone,
       appointmentDate: data.date,
-      appointmentTime: data.time,
+      appointmentTime: new Date(`1970-01-01T${data.time}`).toLocaleTimeString(
+        "en-BD",
+        {
+          timeZone: "Asia/Dhaka",
+          hour: "2-digit",
+          minute: "2-digit",
+          hour12: true,
+        },
+      ),
       reason: data.reason,
     };
 
     const res = await fetch("http://localhost:5000/booking", {
-        method: "POST",
-        headers:{
-            "content-type":"application/json"
-        },
-        body: JSON.stringify(bookingData)
-    })
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(bookingData),
+    });
 
-    if(res){
-        toast.success("User Successfully Booking Now!")
+    if (res) {
+      toast.success("User Successfully Booking Now!");
     }
 
     // const result = await res.json()
@@ -124,15 +134,15 @@ export function BookingModal({ doctor }) {
                       </Select.Trigger>
                       <Select.Popover>
                         <ListBox>
-                          <ListBox.Item id="florida" textValue="Florida">
+                          <ListBox.Item id="Male" textValue="Male">
                             Male
                             <ListBox.ItemIndicator />
                           </ListBox.Item>
-                          <ListBox.Item id="delaware" textValue="Delaware">
+                          <ListBox.Item id="Female" textValue="Female">
                             Female
                             <ListBox.ItemIndicator />
                           </ListBox.Item>
-                          <ListBox.Item id="california" textValue="California">
+                          <ListBox.Item id="Others" textValue="Others">
                             Others
                             <ListBox.ItemIndicator />
                           </ListBox.Item>

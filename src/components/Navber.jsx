@@ -35,8 +35,8 @@ export default function Navber() {
         </li>
       </Link>
       <Link
-        className={`${pathname === "/deshboard" ? "text-[#00A6FB] font-bold" : ""}`}
-        href={"/deshboard"}
+        className={`${pathname === "/dashboard" ? "text-[#00A6FB] font-bold" : ""}`}
+        href={"/dashboard"}
       >
         <li className="text-[16px] font-semibold hover:bg-gray-300 rounded px-3 py-1.5">
           Dashboard

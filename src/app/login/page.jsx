@@ -17,7 +17,7 @@ import { authClient } from "@/lib/auth-client";
 import { toast } from "react-toastify";
 import { redirect } from "next/navigation";
 
-export default function RegisterPage() {
+export default async function RegisterPage() {
   const onSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
