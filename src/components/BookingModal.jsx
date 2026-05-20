@@ -75,7 +75,7 @@ export function BookingModal({ doctor }) {
           <Modal.Dialog className="sm:max-w-md">
             <Modal.CloseTrigger />
             <Modal.Header>
-              <Modal.Heading className="pl-6 text-xl font-bold text-center">
+              <Modal.Heading className="text-xl font-bold text-center">
                 <div className="text-4xl text-[#00A6FB] flex justify-center mb-2">
                   <GiHealthNormal />
                 </div>
@@ -96,7 +96,7 @@ export function BookingModal({ doctor }) {
                     defaultValue={user?.email}
                   >
                     <Label>User Email</Label>
-                    <Input readOnly className="bg-[#00A6FB]/10" />
+                    <Input readOnly className="bg-[#00A6FB]/10 w-full rounded-xl" />
                   </TextField>
 
                   <TextField
@@ -107,7 +107,7 @@ export function BookingModal({ doctor }) {
                     defaultValue={doctor?.name}
                   >
                     <Label>Doctor Name</Label>
-                    <Input readOnly className="bg-[#00A6FB]/10" />
+                    <Input readOnly className="bg-[#00A6FB]/10 w-full rounded-xl" />
                   </TextField>
 
                   <TextField
@@ -117,7 +117,7 @@ export function BookingModal({ doctor }) {
                     type="text"
                   >
                     <Label>Patient Name</Label>
-                    <Input placeholder="Full Name" />
+                    <Input placeholder="Full Name" className="w-full rounded-xl"/>
                   </TextField>
 
                   <div className="flex justify-between items-center gap-4">
@@ -151,14 +151,14 @@ export function BookingModal({ doctor }) {
                     </Select>
 
                     <TextField
-                      className="w-[170px]"
-                      name="phone"
-                      type="tel"
-                      isRequired
-                    >
-                      <Label>Phone</Label>
-                      <Input placeholder="Phone number" />
-                    </TextField>
+                    isRequired
+                    className="w-full"
+                    name="phone"
+                    type="tel"
+                  >
+                    <Label>Phone</Label>
+                    <Input placeholder="Phone" className="w-full rounded-xl"/>
+                  </TextField>
                   </div>
 
                   <div className="flex justify-between items-center gap-4">
@@ -181,9 +181,9 @@ export function BookingModal({ doctor }) {
                     </TimeField>
                   </div>
 
-                  <TextField className="w-full" name="reason">
+                  <TextField name="reason">
                     <Label>Reason</Label>
-                    <Input placeholder="Enter your problem" />
+                    <Input placeholder="Enter your problem" className="w-full rounded-xl"/>
                   </TextField>
 
                   <Modal.Footer>

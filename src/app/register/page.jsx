@@ -65,22 +65,22 @@ export default function RegisterPage() {
         <FieldGroup>
           <TextField isRequired name="name" type="text">
             <Label>Name</Label>
-            <Input placeholder="Enter your name" />
+            <Input placeholder="Enter your name" className="w-full rounded-xl"/>
             <FieldError />
           </TextField>
           <TextField isRequired name="email" type="email">
             <Label>Email</Label>
-            <Input placeholder="Enter your email" />
+            <Input placeholder="Enter your email" className="w-full rounded-xl"/>
             <FieldError />
           </TextField>
           <TextField name="image" type="url">
             <Label>Photo URL (Optional)</Label>
-            <Input placeholder="https://..." />
+            <Input placeholder="https://..." className="w-full rounded-xl"/>
             <FieldError />
           </TextField>
           <TextField isRequired name="password" type="text">
             <Label>Password</Label>
-            <Input placeholder="password" />
+            <Input placeholder="password" className="w-full rounded-xl"/>
             <FieldError />
           </TextField>
         </FieldGroup>

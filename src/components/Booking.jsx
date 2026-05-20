@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { Card } from "@heroui/react";
 import {
@@ -40,7 +40,7 @@ export default function BookingPage({ data }) {
         <span className="font-bold text-gray-600">{patientName}</span>
       </p>
       <p className="text-gray-500 flex items-center gap-1">
-        <MdOutlineAlternateEmail /> Patient Email:{" "}
+        <MdOutlineAlternateEmail /> Email:{" "}
         <span className="font-bold text-gray-600">{userEmail}</span>
       </p>
 

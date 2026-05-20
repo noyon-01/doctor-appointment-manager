@@ -1,7 +1,7 @@
 import { auth } from "@/lib/auth";
-import { PencilToSquare } from "@gravity-ui/icons";
 import { Avatar, Card } from "@heroui/react";
 import { headers } from "next/headers";
+import UpdatedProfile from "./UpdateProfile";
 
 export default async function ProfilePage() {
   const session = await auth.api.getSession({
@@ -10,7 +10,7 @@ export default async function ProfilePage() {
   const user = session?.user;
 
   return (
-    <Card className="rounded-xl w-96 p-6 border-t-4 border-[#00A6FB]">
+    <Card className="rounded-xl w-120 p-6 border-t-4 border-[#00A6FB]">
       <div className="flex items-center gap-3">
         <Avatar size="lg" className="w-20 h-20 rounded-full">
           <Avatar.Image
@@ -27,9 +27,7 @@ export default async function ProfilePage() {
         </div>
       </div>
 
-      <button className="btn rounded-xl bg-[#00A6FB] text-white">
-          <PencilToSquare /> Update Profile
-        </button>
+      <UpdatedProfile/>
     </Card>
   );
 }

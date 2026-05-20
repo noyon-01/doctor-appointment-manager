@@ -63,12 +63,12 @@ export default async function RegisterPage() {
         <FieldGroup>
           <TextField isRequired name="email" type="email">
             <Label>Email</Label>
-            <Input placeholder="Enter your email" />
+            <Input placeholder="Enter your email" className="w-full rounded-xl"/>
             <FieldError />
           </TextField>
           <TextField isRequired name="password" type="password">
             <Label>Password</Label>
-            <Input placeholder="Password" />
+            <Input placeholder="Password" className="w-full rounded-xl"/>
             <FieldError />
           </TextField>
           <p className="text-right text-gray-500">Forgot Password?</p>

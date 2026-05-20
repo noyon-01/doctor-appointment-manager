@@ -57,8 +57,8 @@ export function UpdatedBooking({ bookingData }) {
           <Modal.Dialog className="sm:max-w-md">
             <Modal.CloseTrigger />
             <Modal.Header>
-              <Modal.Heading className="pl-6 text-xl font-bold">
-                Update Booking Appointment
+              <Modal.Heading className="pl-6 text-xl font-bold flex gap-1 items-center">
+                <PencilToSquare/> Update Booking Appointment
               </Modal.Heading>
             </Modal.Header>
             <Modal.Body className="px-6 pb-6 pt-4">

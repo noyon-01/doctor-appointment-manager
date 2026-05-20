@@ -14,6 +14,7 @@ export default function Navber() {
 
   const onSubmit = async () => {
     await authClient.signOut();
+    window.location.reload();
   };
 
   const link = (
@@ -92,12 +93,13 @@ export default function Navber() {
                   referrerPolicy="no-referrer"
                   alt={user?.name.charAt(0)}
                   src={user?.image}
+                  className="cursor-pointer"
                 />
                 <Avatar.Fallback>{user?.name.charAt(0)}</Avatar.Fallback>
               </Avatar>
               <button
                 onClick={onSubmit}
-                className="text-[16px] font-semibold bg-[#00A6FB] text-white px-4 py-2 rounded"
+                className="text-[16px] font-semibold bg-[#00A6FB] text-white px-4 py-2 rounded cursor-pointer"
               >
                 Logout
               </button>
@@ -107,13 +109,13 @@ export default function Navber() {
           {!user && (
             <>
               <Link
-                className="text-[16px] font-semibold border-1 border-[#00A6FB] hover:bg-[#00A6FB] hover:text-white px-5 py-2 rounded"
+                className="text-[16px] font-semibold border-1 cursor-pointer border-[#00A6FB] hover:bg-[#00A6FB] hover:text-white px-5 py-2 rounded"
                 href={"/login"}
               >
                 Login
               </Link>
               <Link
-                className="text-[16px] font-semibold bg-[#00A6FB] text-white px-4 py-2 rounded"
+                className="text-[16px] font-semibold cursor-pointer bg-[#00A6FB] text-white px-4 py-2 rounded"
                 href={"/register"}
               >
                 Register
