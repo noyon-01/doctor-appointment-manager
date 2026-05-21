@@ -4,6 +4,11 @@ import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import Link from "next/link";
 
+export const metadata = {
+  title: "DocAppoint - User Dashboard | Manage Profile & Appointments",
+  description: "Access your personal dashboard to manage your profile, view appointments, update booking details, and stay connected with your healthcare services.",
+};
+
 export default async function DeshboardPage({ searchParams }) {
   const params = await searchParams;
   const activeTab = params?.tab || "booking";
@@ -17,7 +22,7 @@ export default async function DeshboardPage({ searchParams }) {
     headers: await headers(),
   });
 
-  const res = await fetch(`http://localhost:5000/booking/${user?.id}`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/booking/${user?.id}`, {
     headers: {
       authorization: `Bearer ${token}`,
     },

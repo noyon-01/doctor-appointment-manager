@@ -1,7 +1,7 @@
 import DoctorCard from "./DoctorCard";
 
 export default async function () {
-  const res = await fetch("http://localhost:5000/doctors");
+  const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/doctors`);
   const doctors = await res.json();
   const topRatedDoctors = [...doctors]
     .sort((a, b) => b.rating - a.rating)

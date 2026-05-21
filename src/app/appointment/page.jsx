@@ -1,7 +1,12 @@
 import DoctorCard from "@/components/DoctorCard";
 
+export const metadata = {
+  title: "DocAppoint - All Appointments | Manage Your Doctor Bookings Online",
+  description: "View and manage all your doctor appointments in one place. Track upcoming visits, reschedule appointments, and stay organized with your healthcare schedule.",
+};
+
 export default async function AppointmentPage() {
-  const res = await fetch("http://localhost:5000/doctors");
+  const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/doctors`);
   const doctors = await res.json();
 
   const topRatedDoctors = [...doctors].sort((a, b) => b.rating - a.rating);

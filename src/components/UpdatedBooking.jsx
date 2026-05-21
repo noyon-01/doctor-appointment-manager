@@ -37,7 +37,7 @@ export function UpdatedBooking({ bookingData }) {
     const { data: tokenData } = await authClient.token();
 
     const res = await fetch(
-      `http://localhost:5000/booking/${bookingData?._id}`,
+      `${process.env.NEXT_PUBLIC_URL}/booking/${bookingData?._id}`,
       {
         method: "PATCH",
         headers: {

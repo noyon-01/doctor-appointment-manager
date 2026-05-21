@@ -8,6 +8,11 @@ import { BookingModal } from "@/components/BookingModal";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 
+export const metadata = {
+  title: "DocAppoint - Doctor Profile | View Doctor Details & Book Appointment",
+  description: "Explore doctor profiles, qualifications, specialties, experience, and availability. Book your appointment instantly with trusted healthcare professionals.",
+};
+
 export default async function DoctorDetailsPage({ params }) {
   const { id } = await params;
 
@@ -15,7 +20,7 @@ export default async function DoctorDetailsPage({ params }) {
     headers: await headers(),
   });
 
-  const res = await fetch(`http://localhost:5000/doctors/${id}`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/doctors/${id}`, {
     headers: {
       authorization: `Bearer ${token}`,
     },
