@@ -42,14 +42,14 @@ export default async function DoctorDetailsPage({ params }) {
 
   return (
     <div className="bg-gradient-to-br from-teal-50 via-slate-50 to-cyan-100 py-10">
-      <div className="max-w-5xl mx-auto bg-white rounded-2xl p-5 flex justify-center items-center gap-10">
+      <div className="max-w-5xl mx-auto bg-white rounded-2xl p-5 flex flex-col md:flex-row justify-center items-center gap-10">
         <div>
           <Image
             src={image}
             alt={name}
             width={600}
             height={600}
-            className="object-cover w-100 h-120 rounded-2xl"
+            className="object-cover w-110 md:w-150 lg:w-100 md:h-150 lg:h-120 rounded-2xl"
           />
         </div>
 
@@ -64,7 +64,7 @@ export default async function DoctorDetailsPage({ params }) {
           </p>
           <p className="my-3 text-[16px] text-gray-500">{description}</p>
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
             <div className="flex items-center gap-4 px-5 py-2 rounded-xl border-1 border-[#00A6FB]">
               <div className="text-3xl text-[#00A6FB] bg-gray-200 p-2 rounded-xl">
                 <MdMoreTime />

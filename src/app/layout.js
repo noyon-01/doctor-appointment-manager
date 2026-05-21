@@ -1,8 +1,8 @@
 import { Outfit } from "next/font/google";
 import Navber from "@/components/Navber";
 import Footer from "@/components/Footer";
-import { ToastContainer, toast } from "react-toastify";
 import "./globals.css";
+import { Toaster } from "react-hot-toast";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -25,7 +25,7 @@ export default function RootLayout({ children }) {
       <body className={`${outfit.className} min-h-full flex flex-col`}>
         <Navber />
         <main className="">{children}</main>
-        <ToastContainer position="top-center" />
+        <Toaster position="top-center" reverseOrder={false} />
         <Footer />
       </body>
     </html>

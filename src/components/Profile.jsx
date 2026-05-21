@@ -10,8 +10,8 @@ export default async function ProfilePage() {
   const user = session?.user;
 
   return (
-    <Card className="rounded-xl w-120 p-6 border-t-4 border-[#00A6FB]">
-      <div className="flex items-center gap-3">
+    <Card className="rounded-xl w-110 md:w-120 p-6 border-t-4 border-[#00A6FB]">
+      <div className="flex flex-col md:flex-row justify-center items-center gap-3">
         <Avatar size="lg" className="w-20 h-20 rounded-full">
           <Avatar.Image
             referrerPolicy="no-referrer"
@@ -21,7 +21,7 @@ export default async function ProfilePage() {
           <Avatar.Fallback>{user?.name.charAt(0)}</Avatar.Fallback>
         </Avatar>
 
-        <div>
+        <div className="text-center md:text-left">
           <h1 className="text-2xl font-bold">{user?.name}</h1>
           <p className="text-xl font-semibold text-gray-500">{user?.email}</p>
         </div>

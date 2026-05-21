@@ -5,12 +5,12 @@ import { FaQuoteRight } from "react-icons/fa";
 export default function ClientReview() {
   return (
     <div className="bg-gradient-to-r from-violet-50 via-slate-50 to-cyan-50">
-      <div className="max-w-7xl mx-auto py-20">
+      <div className="max-w-7xl mx-auto py-20 px-10 lg:px-0">
         <div className="text-center">
           <p className="text-[#00A6FB] text-xl font-bold mb-4">Testimonials</p>
-          <h1 className="text-5xl font-bold">What Our Client Says</h1>
+          <h1 className="text-4xl md:text-5xl font-bold">What Our Client Says</h1>
         </div>
-        <div className="grid grid-cols-3 gap-5 mt-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-10">
           <Card className="px-6 py-12 shadow">
             <div className="flex items-center gap-1 text-[#FFC422]">
               <FaRegStar />

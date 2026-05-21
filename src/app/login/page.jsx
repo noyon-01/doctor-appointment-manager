@@ -14,8 +14,8 @@ import {
 import Link from "next/link";
 import { GiHealthNormal } from "react-icons/gi";
 import { authClient } from "@/lib/auth-client";
-import { toast } from "react-toastify";
 import { redirect } from "next/navigation";
+import toast from "react-hot-toast";
 
 export default async function RegisterPage() {
   const onSubmit = async (e) => {
@@ -29,7 +29,7 @@ export default async function RegisterPage() {
     });
 
     if (data) {
-      toast.success("User is Successfully Login Now!");
+      toast.success('User is Successfully Login Now!')
       redirect("/");
     }
 

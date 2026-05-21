@@ -9,13 +9,13 @@ import { FaLongArrowAltRight } from "react-icons/fa";
 export default function ServiceSection() {
   return (
     <div className="bg-gradient-to-r from-sky-50 via-slate-50 to-teal-100">
-      <div className="max-w-7xl mx-auto py-20">
+      <div className="max-w-7xl mx-auto py-20 px-10 lg:px-0">
         <div className="text-center">
           <p className="text-[#00A6FB] text-xl font-bold mb-4">Our Service</p>
           <h1 className="text-5xl font-bold">Our Madical Service</h1>
         </div>
 
-        <div className="grid grid-cols-3 gap-6 mt-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
           <Card className="rounded-xl">
             <Image
               className="w-96"

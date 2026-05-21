@@ -15,7 +15,7 @@ export default async function () {
           <h1 className="text-5xl font-bold">Top Rated Doctor</h1>
         </div>
 
-        <div className="grid grid-cols-3 gap-5 mt-10 px-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-10 px-10">
           {topRatedDoctors.map((doctor) => (
             <DoctorCard key={doctor._id} doctor={doctor} />
           ))}

@@ -14,8 +14,8 @@ import {
 import Link from "next/link";
 import { GiHealthNormal } from "react-icons/gi";
 import { authClient } from "@/lib/auth-client";
-import { toast } from "react-toastify";
 import { redirect } from "next/navigation";
+import toast from "react-hot-toast";
 
 export default function RegisterPage() {
   const onSubmit = async (e) => {
@@ -36,7 +36,7 @@ export default function RegisterPage() {
     }
 
     if (error) {
-      toast.error(error.message);
+      toast.error(error.message)
       return;
     }
   };

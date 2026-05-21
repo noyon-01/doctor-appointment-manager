@@ -13,8 +13,8 @@ import {
   DateField,
   TimeField,
 } from "@heroui/react";
+import toast from "react-hot-toast";
 import { GiHealthNormal } from "react-icons/gi";
-import { toast } from "react-toastify";
 
 export function BookingModal({ doctor }) {
   const { data: session } = authClient.useSession();
@@ -65,7 +65,7 @@ export function BookingModal({ doctor }) {
   return (
     <Modal>
       <Button
-        className="btn bg-[#00A6FB] text-white rounded-xl mt-4"
+        className="btn bg-[#00A6FB] text-white rounded-xl mt-4 w-full"
         variant="secondary"
       >
         Book Appointment
