@@ -10,7 +10,7 @@ export default async function ProfilePage() {
   const user = session?.user;
 
   return (
-    <Card className="rounded-xl w-83 md:w-120 p-6 border-t-4 border-[#00A6FB]">
+    <Card className="rounded-xl w-[90vw] max-w-120 md:w-120 p-6 border-t-4 border-[#00A6FB]">
       <div className="flex flex-col md:flex-row justify-center items-center gap-3">
         <Avatar size="lg" className="w-20 h-20 rounded-full">
           <Avatar.Image
@@ -27,7 +27,7 @@ export default async function ProfilePage() {
         </div>
       </div>
 
-      <UpdatedProfile user={user}/>
+      <UpdatedProfile user={user} />
     </Card>
   );
 }

@@ -36,7 +36,7 @@ export default async function DeshboardPage({ searchParams }) {
 
   return (
     <div className="bg-gradient-to-br from-blue-50 via-white to-indigo-100 px-5 py-10 lg:pt-15 lg:pb-28 ">
-      <div className="max-w-7xl md:h-[50vh] mx-auto md:text-left">
+      <div className="max-w-5xl mx-auto md:text-left">
         <h1 className="text-4xl font-bold">Dashboard</h1>
 
         <div className="flex items-center gap-1 p-1 rounded-xl shadow w-63 bg-white mt-4">
@@ -66,7 +66,7 @@ export default async function DeshboardPage({ searchParams }) {
         <div className="mt-8">
           {activeTab === "booking" ? (
             Array.isArray(data) && data.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 {data.map((d) => (
                   <div key={d._id}>
                     <BookingPage data={d} />
@@ -74,7 +74,7 @@ export default async function DeshboardPage({ searchParams }) {
                 ))}
               </div>
             ) : (
-              <Card className="text-xl border-t-4 border-[#00A6FB] w-83 md:w-2xl font-bold text-center text-gray-500 py-20 rounded-xl mt-5 md:mt-10">
+              <Card className="text-xl border-t-4 border-[#00A6FB] w-[90vw] max-w-xl md:w-xl font-bold text-center text-gray-500 py-20 rounded-xl mt-5 md:mt-10">
                 <h1>
                   You haven't Booked any{" "}
                   <span className="text-[#00A6FB]">Appointment</span> yet.

@@ -13,6 +13,7 @@ import {
   DateField,
   TimeField,
 } from "@heroui/react";
+import { redirect } from "next/navigation";
 import toast from "react-hot-toast";
 import { GiHealthNormal } from "react-icons/gi";
 
@@ -59,6 +60,7 @@ export function BookingModal({ doctor }) {
 
     if (res) {
       toast.success("User Successfully Booking Now!");
+      redirect("/dashboard");
     }
   };
 
