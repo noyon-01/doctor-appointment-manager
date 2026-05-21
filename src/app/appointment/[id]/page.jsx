@@ -108,7 +108,7 @@ export default async function DoctorDetailsPage({ params }) {
 
           <p className="font-semibold my-3">Availability</p>
           <div className="flex items-center gap-2">
-            {availability.map((time, index) => (
+            {availability?.map((time, index) => (
               <div key={index}>
                 <div className="badge badge-soft badge-info mb-3">{time}</div>
               </div>
