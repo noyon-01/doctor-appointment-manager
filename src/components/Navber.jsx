@@ -76,7 +76,7 @@ export default function Navber() {
             </ul>
           </div>
           <div className="flex justify-center items-center gap-2 text-[#00A6FB]">
-            <span className="text-4xl mt-0.5">
+            <span className="text-2xl md:text-4xl md:mt-0.5">
               <GiHealthNormal />
             </span>
             <h1 className="text-2xl font-bold">DocAppoint</h1>
@@ -85,10 +85,10 @@ export default function Navber() {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{link}</ul>
         </div>
-        <div className="navbar-end flex items-center gap-4">
+        <div className="navbar-end flex items-center gap-1 md:gap-4">
           {user && (
             <>
-              <Avatar size="lg">
+              <Avatar size="lg" className="hidden md:block">
                 <Avatar.Image
                   referrerPolicy="no-referrer"
                   alt={user?.name.charAt(0)}
@@ -115,7 +115,7 @@ export default function Navber() {
                 Login
               </Link>
               <Link
-                className="text-[16px] font-semibold cursor-pointer bg-[#00A6FB] text-white px-4 py-2 rounded"
+                className="text-[16px] font-semibold cursor-pointer bg-[#00A6FB] text-white px-4 py-2 rounded hidden md:block"
                 href={"/register"}
               >
                 Register
