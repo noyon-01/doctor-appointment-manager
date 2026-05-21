@@ -119,7 +119,7 @@ export function BookingModal({ doctor }) {
                   <TextField
                     isRequired
                     className="w-full"
-                    name="patientName"
+                    name="name"
                     type="text"
                   >
                     <Label>Patient Name</Label>
