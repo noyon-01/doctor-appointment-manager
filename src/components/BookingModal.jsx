@@ -104,7 +104,7 @@ export function BookingModal({ doctor }) {
 
                   <TextField
                     className="w-full"
-                    name="name"
+                    name="doctorName"
                     type="text"
                     variant="secondary"
                     defaultValue={doctor?.name}
@@ -119,7 +119,7 @@ export function BookingModal({ doctor }) {
                   <TextField
                     isRequired
                     className="w-full"
-                    name="name"
+                    name="patientName"
                     type="text"
                   >
                     <Label>Patient Name</Label>

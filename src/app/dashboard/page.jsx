@@ -22,21 +22,12 @@ export default async function DeshboardPage({ searchParams }) {
     headers: await headers(),
   });
 
-  // const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/booking/${user?.id}`, {
-  //   headers: {
-  //     authorization: `Bearer ${token}`,
-  //   },
-  // });
-  // const data = await res.json();
-
   const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/booking/${user?.id}`, {
   headers: {
     authorization: `Bearer ${token}`,
   },
 });
 const data = await res.json();
-
-console.log(data)
 
   return (
     <div className="bg-gradient-to-br from-blue-50 via-white to-indigo-100 pt-15 pb-28">

@@ -9,6 +9,8 @@ export default async function AppointmentPage() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/doctors`);
   const doctors = await res.json();
 
+  console.log(doctors)
+
   const topRatedDoctors = [...doctors].sort((a, b) => b.rating - a.rating);
 
   return (
