@@ -22,12 +22,21 @@ export default async function DeshboardPage({ searchParams }) {
     headers: await headers(),
   });
 
+  // const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/booking/${user?.id}`, {
+  //   headers: {
+  //     authorization: `Bearer ${token}`,
+  //   },
+  // });
+  // const data = await res.json();
+
   const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/booking/${user?.id}`, {
-    headers: {
-      authorization: `Bearer ${token}`,
-    },
-  });
-  const data = await res.json();
+  headers: {
+    authorization: `Bearer ${token}`,
+  },
+});
+const data = await res.json();
+
+console.log(data)
 
   return (
     <div className="bg-gradient-to-br from-blue-50 via-white to-indigo-100 pt-15 pb-28">
@@ -61,7 +70,7 @@ export default async function DeshboardPage({ searchParams }) {
         <div className="mt-8">
           {activeTab === "booking" ? (
             <div className="grid grid-cols-3 gap-5">
-              {data?.map((d) => (
+              {Array.isArray(data) && data.map((d) => (
                 <div key={d._id}>
                   <BookingPage data={d} />
                 </div>
