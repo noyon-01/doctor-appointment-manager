@@ -61,7 +61,7 @@ export default async function DeshboardPage({ searchParams }) {
         <div className="mt-8">
           {activeTab === "booking" ? (
             <div className="grid grid-cols-3 gap-5">
-              {data.map((d) => (
+              {data?.map((d) => (
                 <div key={d._id}>
                   <BookingPage data={d} />
                 </div>
