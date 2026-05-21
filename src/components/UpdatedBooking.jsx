@@ -17,6 +17,7 @@ import { toast } from "react-hot-toast";
 
 export function UpdatedBooking({ bookingData }) {
   const router = useRouter();
+  // console.log(bookingData)
 
   const handleUpdateBookAppointment = async (e) => {
     e.preventDefault();
@@ -53,7 +54,7 @@ export function UpdatedBooking({ bookingData }) {
     );
     const data = await res.json();
     if (data?.modifiedCount > 0) {
-      toast.success("Appointment updated successfully");
+      toast.success("Appointment updated successfully!");
       router.refresh();
     }
   };
