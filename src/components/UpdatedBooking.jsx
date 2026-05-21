@@ -1,5 +1,6 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
 import { PencilToSquare } from "@gravity-ui/icons";
 import {
   Button,
@@ -33,12 +34,15 @@ export function UpdatedBooking({ bookingData }) {
       ),
     };
 
+    const { data: tokenData } = await authClient.token();
+
     const res = await fetch(
       `http://localhost:5000/booking/${bookingData?._id}`,
       {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
+          authorization: `Bearer ${tokenData?.token}`,
         },
         body: JSON.stringify(updateBooking),
       },
@@ -58,7 +62,7 @@ export function UpdatedBooking({ bookingData }) {
             <Modal.CloseTrigger />
             <Modal.Header>
               <Modal.Heading className="pl-6 text-xl font-bold flex gap-1 items-center">
-                <PencilToSquare/> Update Booking Appointment
+                <PencilToSquare /> Update Booking Appointment
               </Modal.Heading>
             </Modal.Header>
             <Modal.Body className="px-6 pb-6 pt-4">

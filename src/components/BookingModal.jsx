@@ -46,10 +46,13 @@ export function BookingModal({ doctor }) {
       reason: data.reason,
     };
 
+    const { data: tokenData } = await authClient.token();
+
     const res = await fetch("http://localhost:5000/booking", {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        authorization: `Bearer ${tokenData?.token}`,
       },
       body: JSON.stringify(bookingData),
     });
@@ -57,9 +60,6 @@ export function BookingModal({ doctor }) {
     if (res) {
       toast.success("User Successfully Booking Now!");
     }
-
-    // const result = await res.json()
-    // console.log(result);
   };
 
   return (
@@ -96,7 +96,10 @@ export function BookingModal({ doctor }) {
                     defaultValue={user?.email}
                   >
                     <Label>User Email</Label>
-                    <Input readOnly className="bg-[#00A6FB]/10 w-full rounded-xl" />
+                    <Input
+                      readOnly
+                      className="bg-[#00A6FB]/10 w-full rounded-xl"
+                    />
                   </TextField>
 
                   <TextField
@@ -107,7 +110,10 @@ export function BookingModal({ doctor }) {
                     defaultValue={doctor?.name}
                   >
                     <Label>Doctor Name</Label>
-                    <Input readOnly className="bg-[#00A6FB]/10 w-full rounded-xl" />
+                    <Input
+                      readOnly
+                      className="bg-[#00A6FB]/10 w-full rounded-xl"
+                    />
                   </TextField>
 
                   <TextField
@@ -117,7 +123,10 @@ export function BookingModal({ doctor }) {
                     type="text"
                   >
                     <Label>Patient Name</Label>
-                    <Input placeholder="Full Name" className="w-full rounded-xl"/>
+                    <Input
+                      placeholder="Full Name"
+                      className="w-full rounded-xl"
+                    />
                   </TextField>
 
                   <div className="flex justify-between items-center gap-4">
@@ -151,14 +160,17 @@ export function BookingModal({ doctor }) {
                     </Select>
 
                     <TextField
-                    isRequired
-                    className="w-full"
-                    name="phone"
-                    type="tel"
-                  >
-                    <Label>Phone</Label>
-                    <Input placeholder="Phone" className="w-full rounded-xl"/>
-                  </TextField>
+                      isRequired
+                      className="w-full"
+                      name="phone"
+                      type="tel"
+                    >
+                      <Label>Phone</Label>
+                      <Input
+                        placeholder="Phone"
+                        className="w-full rounded-xl"
+                      />
+                    </TextField>
                   </div>
 
                   <div className="flex justify-between items-center gap-4">
@@ -183,7 +195,10 @@ export function BookingModal({ doctor }) {
 
                   <TextField name="reason">
                     <Label>Reason</Label>
-                    <Input placeholder="Enter your problem" className="w-full rounded-xl"/>
+                    <Input
+                      placeholder="Enter your problem"
+                      className="w-full rounded-xl"
+                    />
                   </TextField>
 
                   <Modal.Footer>

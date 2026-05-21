@@ -15,11 +15,16 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" suppressHydrationWarning data-theme="light" className={`h-full antialiased`}>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      data-theme="light"
+      className={`h-full antialiased`}
+    >
       <body className={`${outfit.className} min-h-full flex flex-col`}>
         <Navber />
         <main className="">{children}</main>
-        <ToastContainer position="top-center"/>
+        <ToastContainer position="top-center" />
         <Footer />
       </body>
     </html>

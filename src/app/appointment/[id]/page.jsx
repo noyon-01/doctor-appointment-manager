@@ -4,13 +4,22 @@ import { MdMoreTime } from "react-icons/md";
 import { FaRegHospital } from "react-icons/fa6";
 import { IoMdLocate } from "react-icons/io";
 import { FaCalendarCheck } from "react-icons/fa";
-import Link from "next/link";
 import { BookingModal } from "@/components/BookingModal";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
 
 export default async function DoctorDetailsPage({ params }) {
   const { id } = await params;
 
-  const res = await fetch(`http://localhost:5000/doctors/${id}`);
+  const { token } = await auth.api.getToken({
+    headers: await headers(),
+  });
+
+  const res = await fetch(`http://localhost:5000/doctors/${id}`, {
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+  });
   const doctor = await res.json();
 
   const {
@@ -52,7 +61,9 @@ export default async function DoctorDetailsPage({ params }) {
 
           <div className="grid grid-cols-2 gap-4">
             <div className="flex items-center gap-4 px-5 py-2 rounded-xl border-1 border-[#00A6FB]">
-              <div className="text-3xl text-[#00A6FB] bg-gray-200 p-2 rounded-xl"><MdMoreTime/></div>
+              <div className="text-3xl text-[#00A6FB] bg-gray-200 p-2 rounded-xl">
+                <MdMoreTime />
+              </div>
               <div>
                 <p className="text-gray-500">Experience</p>
                 <p className="font-bold">{experience}</p>
@@ -60,7 +71,9 @@ export default async function DoctorDetailsPage({ params }) {
             </div>
 
             <div className="flex items-center gap-4 px-5 py-2 rounded-xl border-1 border-[#00A6FB]">
-              <div className="text-3xl text-[#00A6FB] bg-gray-200 p-2 rounded-xl"><FaRegHospital/></div>
+              <div className="text-3xl text-[#00A6FB] bg-gray-200 p-2 rounded-xl">
+                <FaRegHospital />
+              </div>
               <div>
                 <p className="text-gray-500">Hospital</p>
                 <p className="font-bold">{hospital}</p>
@@ -68,7 +81,9 @@ export default async function DoctorDetailsPage({ params }) {
             </div>
 
             <div className="flex items-center gap-4 px-5 py-2 rounded-xl border-1 border-[#00A6FB]">
-              <div className="text-3xl text-[#00A6FB] bg-gray-200 p-2 rounded-xl"><IoMdLocate/></div>
+              <div className="text-3xl text-[#00A6FB] bg-gray-200 p-2 rounded-xl">
+                <IoMdLocate />
+              </div>
               <div>
                 <p className="text-gray-500">Location</p>
                 <p className="font-bold">{location}</p>
@@ -76,7 +91,9 @@ export default async function DoctorDetailsPage({ params }) {
             </div>
 
             <div className="flex items-center gap-4 px-5 py-2 rounded-xl border-1 border-[#00A6FB]">
-              <div className="text-3xl text-[#00A6FB] bg-gray-200 p-2 rounded-xl"><FaCalendarCheck/></div>
+              <div className="text-3xl text-[#00A6FB] bg-gray-200 p-2 rounded-xl">
+                <FaCalendarCheck />
+              </div>
               <div>
                 <p className="text-gray-500">Consultation Fee</p>
                 <p className="font-bold">{fee}</p>
@@ -92,7 +109,7 @@ export default async function DoctorDetailsPage({ params }) {
               </div>
             ))}
           </div>
-          <BookingModal doctor={doctor}/>
+          <BookingModal doctor={doctor} />
         </div>
       </div>
     </div>

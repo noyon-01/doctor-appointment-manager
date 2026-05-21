@@ -11,6 +11,7 @@ import {
 import { TrashBin } from "@gravity-ui/icons";
 import { MdOutlineAlternateEmail } from "react-icons/md";
 import { UpdatedBooking } from "./UpdatedBooking";
+import { authClient } from "@/lib/auth-client";
 
 export default function BookingPage({ data }) {
   const {
@@ -25,8 +26,13 @@ export default function BookingPage({ data }) {
   } = data;
 
   const handleDeleteBooked = async () => {
+    const { data: tokenData } = await authClient.token();
+
     const res = await fetch(`http://localhost:5000/booking/${_id}`, {
       method: "DELETE",
+      headers: {
+        authorization: `Bearer ${tokenData?.token}`,
+      },
     });
     const data = await res.json();
     window.location.reload();
