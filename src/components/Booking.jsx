@@ -12,8 +12,12 @@ import { TrashBin } from "@gravity-ui/icons";
 import { MdOutlineAlternateEmail } from "react-icons/md";
 import { UpdatedBooking } from "./UpdatedBooking";
 import { authClient } from "@/lib/auth-client";
+import { useRouter } from "next/navigation";
+import { toast } from "react-hot-toast";
 
 export default function BookingPage({ data }) {
+  const router = useRouter();
+
   const {
     _id,
     doctorName,
@@ -35,7 +39,11 @@ export default function BookingPage({ data }) {
       },
     });
     const data = await res.json();
-    window.location.reload();
+
+    if (data?.deletedCount > 0) {
+      toast.success("Appointment deleted successfully");
+      router.refresh();
+    }
   };
 
   return (

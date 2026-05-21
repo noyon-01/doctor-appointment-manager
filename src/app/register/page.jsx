@@ -3,6 +3,7 @@
 import { FcGoogle } from "react-icons/fc";
 import {
   Button,
+  Description,
   FieldError,
   FieldGroup,
   Fieldset,
@@ -32,11 +33,11 @@ export default function RegisterPage() {
 
     if (data) {
       toast.success("User is Successfully Signup Now!");
-      redirect("/");
+      redirect("/login");
     }
 
     if (error) {
-      toast.error(error.message)
+      toast.error(error.message);
       return;
     }
   };
@@ -65,22 +66,50 @@ export default function RegisterPage() {
         <FieldGroup>
           <TextField isRequired name="name" type="text">
             <Label>Name</Label>
-            <Input placeholder="Enter your name" className="w-full rounded-xl"/>
+            <Input
+              placeholder="Enter your name"
+              className="w-full rounded-xl"
+            />
             <FieldError />
           </TextField>
           <TextField isRequired name="email" type="email">
             <Label>Email</Label>
-            <Input placeholder="Enter your email" className="w-full rounded-xl"/>
+            <Input
+              placeholder="Enter your email"
+              className="w-full rounded-xl"
+            />
             <FieldError />
           </TextField>
           <TextField name="image" type="url">
             <Label>Photo URL (Optional)</Label>
-            <Input placeholder="https://..." className="w-full rounded-xl"/>
+            <Input placeholder="https://..." className="w-full rounded-xl" />
             <FieldError />
           </TextField>
-          <TextField isRequired name="password" type="text">
+
+          <TextField
+            isRequired
+            minLength={6}
+            name="password"
+            type="password"
+            validate={(value) => {
+              if (value.length < 6) {
+                return "Password must be at least 6 characters";
+              }
+              if (!/[A-Z]/.test(value)) {
+                return "Password must contain at least one uppercase letter";
+              }
+              if (!/[a-z]/.test(value)) {
+                return "Password must contain at least one lowercase letter";
+              }
+              return null;
+            }}
+          >
             <Label>Password</Label>
-            <Input placeholder="password" className="w-full rounded-xl"/>
+            <Input placeholder="Enter your password" />
+            <Description>
+              Must be at least 6 characters with 1 uppercase and 1 lowercase
+              letter
+            </Description>
             <FieldError />
           </TextField>
         </FieldGroup>

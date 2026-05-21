@@ -12,8 +12,12 @@ import {
   TextField,
   TimeField,
 } from "@heroui/react";
+import { useRouter } from "next/navigation";
+import { toast } from "react-hot-toast";
 
 export function UpdatedBooking({ bookingData }) {
+  const router = useRouter();
+
   const handleUpdateBookAppointment = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
@@ -48,7 +52,10 @@ export function UpdatedBooking({ bookingData }) {
       },
     );
     const data = await res.json();
-    window.location.reload();
+    if (data?.modifiedCount > 0) {
+      toast.success("Appointment updated successfully");
+      router.refresh();
+    }
   };
 
   return (

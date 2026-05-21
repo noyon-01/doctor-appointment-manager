@@ -27,7 +27,7 @@ export default async function ProfilePage() {
         </div>
       </div>
 
-      <UpdatedProfile />
+      <UpdatedProfile user={user}/>
     </Card>
   );
 }

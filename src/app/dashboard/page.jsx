@@ -35,11 +35,11 @@ export default async function DeshboardPage({ searchParams }) {
   const data = await res.json();
 
   return (
-    <div className="bg-gradient-to-br from-blue-50 via-white to-indigo-100 px-5 py-10 lg:pt-15 lg:pb-28 flex justify-center items-center">
-      <div className="max-w-7xl md:h-[50vh] mx-auto">
-        <h1 className="text-4xl font-bold text-center">Dashboard</h1>
+    <div className="bg-gradient-to-br from-blue-50 via-white to-indigo-100 px-5 py-10 lg:pt-15 lg:pb-28 ">
+      <div className="max-w-7xl md:h-[50vh] mx-auto md:text-left">
+        <h1 className="text-4xl font-bold">Dashboard</h1>
 
-        <div className="flex justify-center items-center gap-1 p-1 rounded-xl shadow w-63 mx-auto bg-white mt-4">
+        <div className="flex items-center gap-1 p-1 rounded-xl shadow w-63 bg-white mt-4">
           <Link
             href="?tab=booking"
             className={`px-5 py-2 rounded-xl font-semibold transition cursor-pointer ${

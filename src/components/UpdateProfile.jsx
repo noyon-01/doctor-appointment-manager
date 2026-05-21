@@ -3,20 +3,33 @@
 import { authClient } from "@/lib/auth-client";
 import { PencilToSquare } from "@gravity-ui/icons";
 import { Button, Input, Label, Modal, Surface, TextField } from "@heroui/react";
+import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
-export default function UpdatedProfile() {
+export default function UpdatedProfile({ user }) {
+  const router = useRouter();
   const UpdateUserInfo = async (e) => {
     e.preventDefault();
     const name = e.target.name.value;
     const image = e.target.image.value;
 
-    await authClient.updateUser({
-      image,
-      name,
-    });
-    window.location.reload();
+    try {
+      const res = await authClient.updateUser({
+        name,
+        image,
+      });
+
+      if (res?.data) {
+        toast.success("Profile updated successfully!");
+
+        router.push("/dashboard?tab=profile");
+        router.refresh();
+      }
+    } catch (error) {
+      toast.error("Update failed!");
+      console.error(error);
+    }
   };
-  
 
   return (
     <Modal>
@@ -35,12 +48,22 @@ export default function UpdatedProfile() {
             <Modal.Body className="px-6 pb-6 pt-4">
               <Surface variant="default">
                 <form onSubmit={UpdateUserInfo} className="flex flex-col gap-4">
-                  <TextField className="w-full" name="name" type="text">
+                  <TextField
+                    className="w-full"
+                    name="name"
+                    type="text"
+                    defaultValue={user.name}
+                  >
                     <Label>Name</Label>
                     <Input placeholder="Name" />
                   </TextField>
 
-                  <TextField className="w-full" name="image" type="text">
+                  <TextField
+                    className="w-full"
+                    name="image"
+                    type="text"
+                    defaultValue={user.image}
+                  >
                     <Label>Photo URL</Label>
                     <Input placeholder="https://..." />
                   </TextField>
