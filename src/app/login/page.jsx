@@ -14,10 +14,11 @@ import {
 import Link from "next/link";
 import { GiHealthNormal } from "react-icons/gi";
 import { authClient } from "@/lib/auth-client";
-import { redirect } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 
 export default async function RegisterPage() {
+  const router = useRouter();
   const onSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
@@ -31,6 +32,7 @@ export default async function RegisterPage() {
     if (data) {
       toast.success('User is Successfully Login Now!')
       redirect("/");
+      router.refresh();
     }
 
     if (error) {
